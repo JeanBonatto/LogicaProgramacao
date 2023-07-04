@@ -1,0 +1,48 @@
+Algoritmo VetoresSemDuplicidade
+//
+
+Var
+   // Declaração dos vetores
+   vetorPrimeiro : Vetor [1..10] de inteiro
+   vetorSegundo : Vetor [1..10] de inteiro
+   vetorVerificador : Vetor [1..10] de inteiro
+   vetorElemento, i,j, cont : inteiro
+   
+Inicio
+   // Passo 1: Leitura do vetor de códigos da capacitação 1
+   Para vetorElemento de 1 até 10 faça
+      Escreva("Digite o código do funcionário da Primeira capacitação : ")
+      Leia(vetorPrimeiro[vetorElemento])
+   Fimpara
+
+   // Passo 2: Leitura do vetor de códigos da capacitação 2
+   Para vetorElemento de 1 até 10 faça
+      Escreva("Digite o código do funcionário da Segunda capacitação: ")
+      Leia(vetorSegundo[vetorElemento])
+   Fimpara
+
+   // Passo 3: Criação do vetor de códigos em comum
+   Para i de 1 até 10 faça
+      Para j de 1 até 10 faça
+         Se vetorPrimeiro[i] = vetorSegundo[j] então
+            vetorVerificador[i] <- vetorPrimeiro[i]
+         Fimse
+      Fimpara
+   Fimpara
+
+   // Passo 4: Verificação de duplicidade e armazenamento no vetor
+   cont <- 0
+   Para i de 1 até 10 faça
+      Se vetorVerificador[i] <> 0 então
+         duplicados[cont] <- vetorVerificador[i]
+         cont <- cont + 1
+      Fimse
+   Fimpara
+
+   // Passo 5: Mostrar os códigos duplicados na tela
+   Escreva("Códigos duplicados:")
+   Para i de 0 até cont-1 faça
+      Escreva(duplicados[i])
+   Fimpara
+
+FimAlgoritmo

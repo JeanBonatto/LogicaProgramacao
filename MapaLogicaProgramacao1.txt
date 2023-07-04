@@ -1,0 +1,57 @@
+Algoritmo "ControleLogistico"
+
+Var
+   // Seção de Declarações das variáveis
+   producaoTotal, producaoRestante: real
+   quantidadeCaminhoes, capacidadeCaminhao, quilometrosCaminhao : inteiro
+   valorTransporte, valorToneladaQuilometro: real
+   custoTotal, capacidadeTotalFrota: real
+   i: inteiro
+Inicio
+
+   Escreva("Digite a produção total em toneladas da empresa:")
+   Leia(producaoTotal)
+
+   Escreva("Digite a quantidade de caminhões disponíveis: ")
+   Leia(quantidadeCaminhoes)
+
+   producaoRestante <- producaoTotal
+   custoTotal <- 0
+   capacidadeTotalFrota <- 0
+   valorTransporte <- 0
+   Para i de 1 até quantidadeCaminhoes faça;
+
+      Escreva("Digite a capacidade do caminhão ",i," em toneladas: ")
+      Leia(capacidadeCaminhao)
+      capacidadeTotalFrota <- capacidadeCaminhao + capacidadeTotalFrota
+
+      Escreva("Quantos quilômetros que o caminhão ",i," percorrerá: ")
+      Leia(quilometrosCaminhao)
+
+      Escreva("Qual o valor por tonelada do quilômetro rodado para o caminhão ",i, " :")
+      Leia(valorToneladaQuilometro)
+
+      // Verificação da aptidão da empresa
+      Se producaoRestante >= capacidadeCaminhao então
+
+         // Cálculo do custo de transporte para caminhões com capacidade superior a 45 toneladas
+         Se capacidadeCaminhao > 45 então
+            valorTransporte <- (capacidadeCaminhao * quilometrosCaminhao) * (valorToneladaQuilometro * 0.75)
+         Senão
+            // Cálculo do custo de transporte para caminhões com capacidade inferior a 45 toneladas
+            valorTransporte <- (capacidadeCaminhao * quilometrosCaminhao) * valorToneladaQuilometro
+         Fimse
+
+         // Atualização das variáveis
+         custoTotal <- custoTotal + valorTransporte
+         producaoRestante <- producaoRestante - capacidadeCaminhao
+      Fimse
+   Fimpara
+   Se capacidadeTotalFrota >= producaoTotal então
+      Escreva("A empresa está Apta para o transporte da produção.")
+      Escreval(" O valor total do custo ficou em R$ ", custoTotal)
+   Senão
+      Escreva("A empresa NÃO está Apta para o transporte da produção")
+   Fimse
+
+Fimalgoritmo
